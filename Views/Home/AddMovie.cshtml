@@ -1,0 +1,67 @@
+﻿@* Trevor Shumway, Wed Jan 26*@
+@{
+    ViewData["Title"] = "Add a Movie";
+}
+@model mission4.Models.AddMovieModel
+<div>
+    <h2>Add a movie to our website!</h2>
+    <fieldset>
+        <form method="post">
+            <table>
+                <br />
+                <tr>
+                    <td><label asp-for="Title">Title:</label></td>
+                    <td><input asp-for="Title" id="title" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Year">Year:</label></td>
+                    <td> <input type="number" asp-for="Year" id="year" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Director">Director:</label></td>
+                    <td><input id="director" asp-for="Director" /></td>
+                </tr>
+
+
+                <tr>
+                    <td><label asp-for="Rating">Rating:</label></td>
+                    <td>
+                        <select asp-for="Rating">
+                            <option value="G">G</option>
+                            <option value="PG">PG</option>
+                            <option value="PG-13">PG-13</option>
+                            <option value="R">R</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Edited">Edited:</label></td>
+                    <td><input type="checkbox" id="edited" asp-for="Edited" /></td>
+                </tr>
+
+                <tr>
+                    <td><label asp-for="LentTo">Lent to:</label></td>
+                    <td><input id="lent_to" asp-for="LentTo" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Notes">Notes:</label></td>
+                    <td><input id="notes" asp-for="Notes" /></td>
+                </tr>
+
+            </table>
+            <label asp-for="Category">Category:</label>
+            <select asp-for="CategoryId">
+                <option value="">Select a Category</option>
+                @foreach (Category c in ViewBag.Categories)
+                {
+                    <option value="@c.CategoryId">@c.CategoryName</option>
+                }
+
+            </select>
+            <br />
+            <input id="submitgrade" type="submit" value="Submit" />
+            @*tag helper*@
+            <div asp-validation-summary="All"></div>
+        </form>
+    </fieldset>
+</div>
